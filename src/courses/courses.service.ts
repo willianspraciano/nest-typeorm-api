@@ -29,13 +29,20 @@ export class CoursesService {
   }
 
   create(createCourseDTO: any) {
-    this.courses.push(createCourseDTO);
+    const course = this.courses.push(createCourseDTO);
+    return course;
   }
 
   update(id: string, updateCourseDTO: any) {
     const courseIndex = this.courses.findIndex(
       (course) => course.id === Number(id),
     );
+
+    if (courseIndex === -1)
+      throw new HttpException(
+        `Course ID ${id} not found`,
+        HttpStatus.NOT_FOUND,
+      );
 
     if (courseIndex >= 0) this.courses[courseIndex] = updateCourseDTO;
   }
@@ -44,6 +51,12 @@ export class CoursesService {
     const courseIndex = this.courses.findIndex(
       (course) => course.id === Number(id),
     );
+
+    if (courseIndex === -1)
+      throw new HttpException(
+        `Course ID ${id} not found`,
+        HttpStatus.NOT_FOUND,
+      );
 
     if (courseIndex >= 0) this.courses.splice(courseIndex, 1);
   }
