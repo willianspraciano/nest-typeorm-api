@@ -13,12 +13,8 @@ let dataSourceOptions: DataSourceOptions = {
   username: configService.get('DB_USER'),
   password: String(configService.get('DB_PASS')),
   database: configService.get('DB_NAME'),
-  entities: [__dirname + '/../**/*.entity.js'],
-  migrations: [
-    configService.get('NODE_ENV') === 'production'
-      ? './dist/database/migrations/*.js'
-      : './src/database/migrations/*.ts',
-  ],
+  entities: ['dist/**/*.entity.js'],
+  migrations: ['dist/database/migrations/*.js'],
 };
 
 if (configService.get('DB_SSL') === 'true') {
