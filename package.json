@@ -17,7 +17,9 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "pretest:e2e": "docker compose up -d db-test",
     "test:e2e": "jest --config ./test/jest-e2e.json",
+    "posttest:e2e": "docker compose stop db-test && docker compose rm -f db-test",
     
     "typeorm": "npx typeorm-ts-node-commonjs --d ./src/database/data-source.config.ts",
     "typeorm:migrate": "npm run typeorm migration:run",

@@ -8,13 +8,11 @@ import { CreateCourseDto } from './dto/create-course.dto';
 
 @Injectable()
 export class CoursesService {
-  constructor(
-    @Inject('COURSES_REPOSITORY')
-    private readonly courseRepository: Repository<Course>,
+  @Inject('COURSES_REPOSITORY')
+  private courseRepository: Repository<Course>;
 
-    @Inject('TAGS_REPOSITORY')
-    private readonly tagRepository: Repository<Tag>,
-  ) {}
+  @Inject('TAGS_REPOSITORY')
+  private tagRepository: Repository<Tag>;
 
   findAll() {
     return this.courseRepository.find({
@@ -69,7 +67,7 @@ export class CoursesService {
 
     if (!course) throw new NotFoundException(`Course ID ${id} not found`);
 
-    await this.courseRepository.delete(id);
+    return await this.courseRepository.remove(course);
   }
 
   private async preloadTagByName(name: string): Promise<Tag> {

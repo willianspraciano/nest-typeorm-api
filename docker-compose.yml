@@ -22,7 +22,7 @@ services:
       - db
 
   db:
-    build: postgres
+    image: postgres
     container_name: nestjs-typeorm-pg
     restart: always
     tty: true
@@ -33,6 +33,19 @@ services:
     environment:
       - POSTGRES_PASSWORD=docker
       - POSTGRES_DB=nestjs_typeorm_db
+
+  db-test:
+    image: postgres
+    container_name: nestjs-typeorm-pg-teste
+    restart: always
+    tty: true
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres-test:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=nestjs_typeorm_db_test
   
   pgadmin:
     image: dpage/pgadmin4
@@ -48,3 +61,4 @@ services:
 
 volumes:
   postgres:
+  postgres-test:
