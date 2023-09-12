@@ -1,4 +1,4 @@
-import { dataSource } from './data-source.config';
+import { dataSource } from '../config/data-source.config';
 
 export const databaseProviders = [
   {
