@@ -22,10 +22,10 @@
     "posttest:e2e": "docker compose stop db-test && docker compose rm -f db-test",
     
     "typeorm": "npx typeorm-ts-node-commonjs --d ./src/config/data-source.config.ts",
-    "typeorm:migrate": "npm run typeorm migration:run",
-    "typeorm:revert": "npm run typeorm migration:revert",
-    "typeorm:generate": "npm run typeorm migration:generate ./src/database/migrations/MigrationName --timestamp",
-    "typeorm:create": "npx typeorm migration:create ./src/database/migrations/MigrationName"
+    "migration:run": "npm run typeorm migration:run",
+    "migration:revert": "npm run typeorm migration:revert",
+    "migration:generate": "npm run typeorm migration:generate ./src/database/migrations/MigrationName --timestamp",
+    "migration:create": "npx typeorm migration:create ./src/database/migrations/MigrationName"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",

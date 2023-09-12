@@ -2,5 +2,5 @@
 
 npm install
 npm run build
-npm run typeorm:migrate
+npm run migration:run
 npm run start:dev
