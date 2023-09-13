@@ -1,18 +1,17 @@
-import { DataSource } from 'typeorm';
+import { TypeormCourseRepository, TypeormTagsRepository } from './repositories';
 
-import { Course } from './entities/course.entity';
-import { Tag } from './entities/tag.entity';
+export const COURSES_PROVIDERS_TOKENS = {
+  CoursesRepository: 'CoursesRepository',
+  TagsRepository: 'CoursesRepository',
+} as const;
 
 export const coursesProviders = [
   {
-    provide: 'COURSES_REPOSITORY',
-    useFactory: (dataSource: DataSource) => dataSource.getRepository(Course),
-    inject: ['DATA_SOURCE'],
+    provide: COURSES_PROVIDERS_TOKENS.CoursesRepository,
+    useClass: TypeormCourseRepository,
   },
-
   {
-    provide: 'TAGS_REPOSITORY',
-    useFactory: (dataSource: DataSource) => dataSource.getRepository(Tag),
-    inject: ['DATA_SOURCE'],
+    provide: COURSES_PROVIDERS_TOKENS.TagsRepository,
+    useClass: TypeormTagsRepository,
   },
 ];
