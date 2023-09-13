@@ -6,7 +6,6 @@ import {
   ManyToMany,
   CreateDateColumn,
   UpdateDateColumn,
-  BeforeInsert,
 } from 'typeorm';
 import { Tag } from './tag.entity';
 
@@ -14,6 +13,11 @@ import { v4 as uuidv4 } from 'uuid';
 
 @Entity('courses')
 export class Course {
+  constructor() {
+    if (this.id) return;
+    this.id = uuidv4();
+  }
+
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -28,12 +32,6 @@ export class Course {
 
   @UpdateDateColumn({ type: 'timestamp' })
   updated_at: Date;
-
-  @BeforeInsert()
-  generatedId() {
-    if (this.id) return;
-    this.id = uuidv4();
-  }
 
   @ManyToMany(() => Tag, (tag) => tag.courses, { cascade: true })
   @JoinTable({
