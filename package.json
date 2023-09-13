@@ -25,7 +25,7 @@
     "migration:run": "npm run typeorm migration:run",
     "migration:revert": "npm run typeorm migration:revert",
     "migration:generate": "npm run typeorm migration:generate ./src/database/migrations/MigrationName --timestamp",
-    "migration:create": "npx typeorm migration:create ./src/database/migrations/MigrationName"
+    "migration:create": "bash -c 'npx typeorm migration:create ./src/database/migrations/$1' --"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
