@@ -66,6 +66,7 @@
     "typescript": "^5.1.3"
   },
   "jest": {
+    "preset": "ts-jest",
     "moduleFileExtensions": [
       "js",
       "json",
@@ -79,6 +80,10 @@
     "collectCoverageFrom": [
       "**/*.(t|j)s"
     ],
+    "moduleNameMapper": {
+      "^@database/(.*)$": "<rootDir>/database/$1",
+      "^@modules/(.*)$": "<rootDir>/modules/$1"
+    },
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
   }
