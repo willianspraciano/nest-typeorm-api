@@ -32,7 +32,7 @@ export class CoursesService {
     const tags = await Promise.all(
       createCourseDto.tags.map((name) => this.preloadTagByName(name)),
     );
-    const course = this.coursesRepository.create({
+    const course = await this.coursesRepository.create({
       ...createCourseDto,
       tags,
     });
