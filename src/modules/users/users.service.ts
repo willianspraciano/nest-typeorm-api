@@ -1,5 +1,4 @@
 import {
-  Inject,
   Injectable,
   NotFoundException,
   ConflictException,
@@ -8,14 +7,10 @@ import { hash } from 'bcryptjs';
 
 import { CreateUserDto, UpdateUserDto } from './dto';
 import { IUsersRepository } from './repositories';
-import { USERS_PROVIDERS_TOKENS } from './users.providers';
 
 @Injectable()
 export class UsersService {
-  constructor(
-    @Inject(USERS_PROVIDERS_TOKENS.UsersRepository)
-    private usersRepository: IUsersRepository,
-  ) {}
+  constructor(private usersRepository: IUsersRepository) {}
 
   async create(createUserDto: CreateUserDto) {
     const { email, name, password } = createUserDto;

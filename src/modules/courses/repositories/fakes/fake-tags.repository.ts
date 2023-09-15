@@ -1,5 +1,5 @@
 import { Tag } from '../../entities/tag.entity';
-import { ITagsRepository } from '../interfaces/tags-repository.interface';
+import { ITagsRepository } from '../interfaces/tags.repository';
 
 export class FakeTagsRepository implements ITagsRepository {
   private tags: Tag[] = [];

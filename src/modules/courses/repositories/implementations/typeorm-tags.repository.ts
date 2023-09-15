@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@nestjs/common';
 import { DataSource, Repository } from 'typeorm';
 
 import { DATABASE_PROVIDERS_TOKENS } from '@database/database.providers';
-import { ITagsRepository } from '../interfaces/tags-repository.interface';
+import { ITagsRepository } from '../interfaces/tags.repository';
 import { Tag } from '../../entities/tag.entity';
 
 @Injectable()

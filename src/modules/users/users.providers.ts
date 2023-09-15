@@ -1,12 +1,8 @@
-import { TypeormUsersRepository } from './repositories';
-
-export const USERS_PROVIDERS_TOKENS = {
-  UsersRepository: 'UsersRepository',
-} as const;
+import { IUsersRepository, TypeormUsersRepository } from './repositories';
 
 export const usersProviders = [
   {
-    provide: USERS_PROVIDERS_TOKENS.UsersRepository,
+    provide: IUsersRepository,
     useClass: TypeormUsersRepository,
   },
 ];

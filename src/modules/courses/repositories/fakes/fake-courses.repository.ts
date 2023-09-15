@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 
 import { Course } from '../../entities/course.entity';
-import { ICourseRepository } from '../interfaces/courses-repository.interface';
+import { ICourseRepository } from '../interfaces/courses.repository';
 
 @Injectable()
 export class FakeCoursesRepository implements ICourseRepository {

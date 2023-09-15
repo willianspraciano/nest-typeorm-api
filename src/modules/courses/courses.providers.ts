@@ -1,17 +1,17 @@
-import { TypeormCourseRepository, TypeormTagsRepository } from './repositories';
-
-export const COURSES_PROVIDERS_TOKENS = {
-  CoursesRepository: 'CoursesRepository',
-  TagsRepository: 'CoursesRepository',
-} as const;
+import {
+  ICourseRepository,
+  ITagsRepository,
+  TypeormCourseRepository,
+  TypeormTagsRepository,
+} from './repositories';
 
 export const coursesProviders = [
   {
-    provide: COURSES_PROVIDERS_TOKENS.CoursesRepository,
+    provide: ICourseRepository,
     useClass: TypeormCourseRepository,
   },
   {
-    provide: COURSES_PROVIDERS_TOKENS.TagsRepository,
+    provide: ITagsRepository,
     useClass: TypeormTagsRepository,
   },
 ];

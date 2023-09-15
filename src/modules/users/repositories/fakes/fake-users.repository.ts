@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 
 import { User } from '../../entities/user.entity';
-import { IUsersRepository } from '../interfaces/users-repository.interface';
+import { IUsersRepository } from '../interfaces/users.repository';
 
 @Injectable()
 export class FakeCoursesRepository implements IUsersRepository {

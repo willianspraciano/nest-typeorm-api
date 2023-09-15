@@ -1,18 +1,14 @@
-import { Inject, Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 
 import { Tag } from './entities/tag.entity';
 import { UpdateCourseDto } from './dto/update-course.dto';
 import { CreateCourseDto } from './dto/create-course.dto';
 import { ICourseRepository, ITagsRepository } from './repositories';
-import { COURSES_PROVIDERS_TOKENS } from './courses.providers';
 
 @Injectable()
 export class CoursesService {
   constructor(
-    @Inject(COURSES_PROVIDERS_TOKENS.CoursesRepository)
     private coursesRepository: ICourseRepository,
-
-    @Inject(COURSES_PROVIDERS_TOKENS.TagsRepository)
     private tagsRepository: ITagsRepository,
   ) {}
 

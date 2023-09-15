@@ -3,7 +3,7 @@ import { Inject, Injectable } from '@nestjs/common';
 
 import { DATABASE_PROVIDERS_TOKENS } from '@database/database.providers';
 import { Course } from '../../entities/course.entity';
-import { ICourseRepository } from '../interfaces/courses-repository.interface';
+import { ICourseRepository } from '../interfaces/courses.repository';
 
 @Injectable()
 export class TypeormCourseRepository implements ICourseRepository {
