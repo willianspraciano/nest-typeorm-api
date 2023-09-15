@@ -7,12 +7,16 @@ import {
   Param,
   Delete,
   ParseUUIDPipe,
+  UseGuards,
 } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import { instanceToInstance } from 'class-transformer';
+
 import { UsersService } from './users.service';
 import { CreateUserDto, UpdateUserDto } from './dto';
 
 @Controller('users')
+@UseGuards(AuthGuard('jwt'))
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
